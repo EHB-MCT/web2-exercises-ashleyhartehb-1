@@ -12,6 +12,7 @@ window.onload = () => {
   let profile = "mapbox/walking";
   let coordinates = [4.294575328274752, 50.78668775413435, 4.2646456534138135, 50.752852661976945];
   let accestoken = 'pk.eyJ1IjoiYXNobGV5aGFydCIsImEiOiJja3VzajN0OWIwZjYwMm9tZnRhNnFmM2NjIn0._6gEaBHQtsooSxw223YP7A';
+  
   mapboxgl.accessToken = accestoken;
   var map = new mapboxgl.Map({
     container: 'map',
