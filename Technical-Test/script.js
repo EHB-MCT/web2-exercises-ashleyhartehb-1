@@ -9,28 +9,20 @@
 //pk.eyJ1IjoiYXNobGV5aGFydCIsImEiOiJja3VzajN0OWIwZjYwMm9tZnRhNnFmM2NjIn0._6gEaBHQtsooSxw223YP7A
 
 window.onload = () => {
-  mapboxgl.accessToken =
-    'pk.eyJ1IjoiYXNobGV5aGFydCIsImEiOiJja3VzajN0OWIwZjYwMm9tZnRhNnFmM2NjIn0._6gEaBHQtsooSxw223YP7A';
+  let profile = "mapbox/walking";
+  let coordinates = [4.294575328274752, 50.78668775413435, 4.2646456534138135, 50.752852661976945];
+  let accestoken = 'pk.eyJ1IjoiYXNobGV5aGFydCIsImEiOiJja3VzajN0OWIwZjYwMm9tZnRhNnFmM2NjIn0._6gEaBHQtsooSxw223YP7A';
+  mapboxgl.accessToken = accestoken;
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/outdoors-v11'
   });
 
-  async function getData(url = 'https://api.mapbox.com', data = {}) {
-    const response = await fetch(url, {
-      method: 'GET',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      //body: JSON.stringify(data)
+  fetch(`https://api.mapbox.com/directions/v5/${profile}/${coordinates[0]},${coordinates[1]};${coordinates[2]},${coordinates[3]}?geometries=geojson&access_token=${accestoken}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
 
-    });
-    console.log(response.json());
-    return response.json();
-  }
 
-  getData();
-  //console.log(data);
-  //document.getElementById("apicall").innerText = data;
 }
