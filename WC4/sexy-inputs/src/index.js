@@ -1,7 +1,11 @@
-var Cleave = require('cleave.js');
-require('cleave.js/dist/addons/cleave-phone.be');
+
+import Cleave from 'cleave.js';
 
 //age only positive numbers
+
+var cleave = new Cleave('.demoinput', {
+  blocks: [2, 2, 2, 3, 2]
+});
 
 //BE
 var phone = new Cleave('.input-phone', {
@@ -29,4 +33,4 @@ var rrn = new Cleave('.input-rrn', {
   delimeters: ['.', '.', '-', '.'],
   blocks: [2, 2, 2, 3, 2],
   numeral: true
-});
+})
